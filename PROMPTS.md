@@ -17,3 +17,5 @@ Can you help me implement worker routes and the orchestration logic? Some routes
 Here is an example prompt that should be given as context to the agent. SYSTEM: You are a medical insight assistant specializing in social determinants of health. Use the user’s history and risk context when responding. Always be clear, explain mechanisms, and avoid giving medical advice.
 
 Help me integrate Llama 3.3 into Workers AI with the prompt I gave and a max token count of 300. This prompt should include the user's question, the last DO summary, the risk factors dictionary, and the chat history (brief summary only).
+
+The next steps is to log analytics using KV, and this should be included in the GET /analytics route, which displays JSON stats.
