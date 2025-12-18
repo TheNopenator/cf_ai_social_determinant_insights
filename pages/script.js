@@ -1,5 +1,5 @@
 // Configuration
-const API_BASE_URL = '/api'; // Points to the worker
+const API_BASE_URL = 'https://morning-moon-2ac7.a3c93199a93b1f003f42f70f4d23bfc3.workers.dev'; // Points to the worker
 const SESSION_COOKIE_NAME = 'sdh_user_id';
 const SESSION_COOKIE_MAX_AGE = 7 * 24 * 60 * 60; // 7 days
 

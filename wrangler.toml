@@ -1,4 +1,6 @@
+name = "social-determinants-insights"
 compatibility_date = "2025-12-18"
+pages_build_output_dir = "pages"
 
 [ai]
 binding = "AI"
@@ -6,3 +8,4 @@ binding = "AI"
 [[durable_objects.bindings]]
 name = "USER_CONTEXT"
 class_name = "UserContextDO"
+script_name = "morning-moon-2ac7"

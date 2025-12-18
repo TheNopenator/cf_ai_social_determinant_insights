@@ -1,5 +1,5 @@
 import { DurableObject } from "cloudflare:workers";
-import { UserContextDO } from "../src/memory";
+import { UserContextDO } from "./memory";
 
 /**
  * Welcome to Cloudflare Workers! This is your first Durable Objects application.
