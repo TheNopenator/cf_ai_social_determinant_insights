@@ -149,7 +149,7 @@ You can then send requests to:
 
 3. Deploy frontend (Pages)
 
-`npx wrangler pages deploy ./frontend`
+`npx wrangler pages deploy ./pages`
 
 After deployment, the application runs fully on Cloudflare’s global edge.
 
