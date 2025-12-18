@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "routes": [
+    {
+      "pattern": "/api/*",
+      "zone_name": "example.com"
+    }
+  ],
+  "include": ["/*"],
+  "exclude": ["/api/*"]
+}

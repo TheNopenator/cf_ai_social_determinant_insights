@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Social Determinants of Health Insights</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+	<div class="container">
+		<!-- Left Panel: Risk Factors & Context -->
+		<aside class="sidebar">
+			<div class="sidebar-header">
+				<h2>Your Profile</h2>
+			</div>
+
+			<div class="sidebar-section">
+				<h3>Risk Factors</h3>
+				<div id="riskFactors" class="tags-list">
+					<span class="tag">No risk factors entered</span>
+				</div>
+				<button id="editRiskBtn" class="btn-secondary">Edit Risk Factors</button>
+			</div>
+
+			<div class="sidebar-section">
+				<h3>Conditions</h3>
+				<div id="conditions" class="tags-list">
+					<span class="tag">None recorded</span>
+				</div>
+			</div>
+
+			<div class="sidebar-section">
+				<h3>Session</h3>
+				<p id="userId" class="session-info">Loading...</p>
+				<button id="newSessionBtn" class="btn-secondary">New Session</button>
+			</div>
+		</aside>
+
+		<!-- Right Panel: Chat -->
+		<main class="chat-container">
+			<div class="chat-header">
+				<h1>Health Insights Assistant</h1>
+				<p>Social Determinants of Health</p>
+			</div>
+
+			<div class="chat-messages" id="chatMessages">
+				<div class="message assistant-message">
+					<div class="message-bubble">
+						<p>Hello! I'm here to help you understand the social determinants of health. Share your concerns or risk factors, and I'll provide personalized insights.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="quick-replies" id="quickReplies">
+				<button class="quick-reply-btn" data-message="What factors affect my health?">Factors affecting health</button>
+				<button class="quick-reply-btn" data-message="How do risk factors impact me?">Risk factors impact</button>
+				<button class="quick-reply-btn" data-message="Tell me about social determinants.">Social determinants</button>
+			</div>
+
+			<div class="chat-input-area">
+				<form id="chatForm" class="chat-form">
+					<input
+						type="text"
+						id="messageInput"
+						placeholder="Ask about social determinants of health..."
+						autocomplete="off"
+						required
+					>
+					<button type="submit" class="btn-primary" id="sendBtn">Send</button>
+				</form>
+				<div id="loadingIndicator" class="loading-indicator" style="display: none;">
+					<span></span><span></span><span></span>
+				</div>
+			</div>
+		</main>
+	</div>
+
+	<!-- Risk Factor Modal -->
+	<div id="riskModal" class="modal" style="display: none;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2>Update Risk Factors & Conditions</h2>
+				<button type="button" class="close-btn">&times;</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="riskInput">Risk Factors (comma-separated):</label>
+					<input type="text" id="riskInput" placeholder="e.g., low income, food insecurity, housing instability">
+					<small>Examples: poverty, food insecurity, housing instability, limited healthcare access, education level, social isolation, transportation barriers</small>
+				</div>
+				<div class="form-group">
+					<label for="conditionsInput">Known Conditions (comma-separated):</label>
+					<input type="text" id="conditionsInput" placeholder="e.g., diabetes, hypertension">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="cancelRiskBtn" class="btn-secondary">Cancel</button>
+				<button type="button" id="submitRiskBtn" class="btn-primary">Save</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
