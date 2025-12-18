@@ -4,7 +4,7 @@ An AI-powered conversational application that helps users explore how social det
 
 This project was built to demonstrate how modern LLMs, distributed systems, and persistent state can be combined to create context-aware, responsible AI applications, especially in sensitive domains like public health.
 
-You can access the publicly hosted application <a href="https://5cc89d63.social-determinants-insights.pages.dev/">here</a>!
+You can access the publicly hosted application here: https://5cc89d63.social-determinants-insights.pages.dev/.
 
 # Project Summary
 
