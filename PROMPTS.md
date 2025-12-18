@@ -15,3 +15,5 @@ There are currently some exceptions in worker-configuration.d.ts. Can you help m
 Can you help me implement worker routes and the orchestration logic? Some routes would be POST /chat (the main endpoint), POST /risk (enters numeric risk factors), GET /context (returns current DO state), and GET /analytics (admin view, but this isn't a priority).
 
 Here is an example prompt that should be given as context to the agent. SYSTEM: You are a medical insight assistant specializing in social determinants of health. Use the user’s history and risk context when responding. Always be clear, explain mechanisms, and avoid giving medical advice.
+
+Help me integrate Llama 3.3 into Workers AI with the prompt I gave and a max token count of 300. This prompt should include the user's question, the last DO summary, the risk factors dictionary, and the chat history (brief summary only).
