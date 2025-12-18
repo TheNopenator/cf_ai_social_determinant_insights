@@ -135,7 +135,7 @@ This runs:
 
 You can then send requests to:
 
-`http://localhost:8787/api/chat`
+`http://localhost:8788`
 
 # Deployment Instructions
 
