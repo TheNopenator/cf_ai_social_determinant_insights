@@ -114,11 +114,13 @@ Prerequisites
 - Cloudflare account
 
 Install dependencies
+
 `
 npm install
 `
 
 Start local development
+
 `
 npx wrangler dev
 `
