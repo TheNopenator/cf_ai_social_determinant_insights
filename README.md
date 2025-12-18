@@ -4,6 +4,8 @@ An AI-powered conversational application that helps users explore how social det
 
 This project was built to demonstrate how modern LLMs, distributed systems, and persistent state can be combined to create context-aware, responsible AI applications, especially in sensitive domains like public health.
 
+You can access the publicly hosted application <a href="https://5cc89d63.social-determinants-insights.pages.dev/">here</a>!
+
 # Project Summary
 
 Social determinants of health, such as housing stability, food access, discrimination, and social support, play a critical role in shaping health outcomes, yet they are often discussed in abstract or one-size-fits-all terms.
