@@ -194,6 +194,53 @@ html, body {
 
 .message-bubble p {
 	margin: 0;
+	line-height: 1.6;
+}
+
+/* Markdown formatting in messages */
+.message-bubble strong {
+	font-weight: 600;
+	color: inherit;
+}
+
+.message-bubble em {
+	font-style: italic;
+	color: inherit;
+}
+
+.message-bubble h1,
+.message-bubble h2,
+.message-bubble h3 {
+	margin: 0.75rem 0 0.5rem 0;
+	font-weight: 600;
+	line-height: 1.4;
+}
+
+.message-bubble h1 {
+	font-size: 1.25rem;
+}
+
+.message-bubble h2 {
+	font-size: 1.1rem;
+}
+
+.message-bubble h3 {
+	font-size: 1rem;
+}
+
+.message-bubble ul {
+	margin: 0.5rem 0 0.5rem 1.5rem;
+	padding: 0;
+	list-style-position: outside;
+}
+
+.message-bubble li {
+	margin-bottom: 0.25rem;
+	text-align: left;
+}
+
+.message-bubble br {
+	line-height: 1.2;
 }
 
 /* Quick Replies */

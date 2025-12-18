@@ -1,5 +1,5 @@
 // Configuration
-const API_BASE_URL = 'https://morning-moon-2ac7.a3c93199a93b1f003f42f70f4d23bfc3.workers.dev'; // Points to the worker
+const API_BASE_URL = 'https://morning-moon-2ac7.ricklee2487.workers.dev'; // Points to the worker
 const SESSION_COOKIE_NAME = 'sdh_user_id';
 const SESSION_COOKIE_MAX_AGE = 7 * 24 * 60 * 60; // 7 days
 
@@ -99,6 +99,44 @@ function startNewSession() {
 // ============================================================================
 
 /**
+ * Simple markdown parser for rendering formatted text
+ */
+function parseMarkdown(text) {
+	let html = text;
+	
+	// Escape HTML first
+	html = html.replace(/&/g, '&amp;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;');
+	
+	// Bold: **text** or __text__
+	html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+	html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+	
+	// Italic: *text* or _text_
+	html = html.replace(/\*([^\*]+?)\*/g, '<em>$1</em>');
+	html = html.replace(/_([^_]+?)_/g, '<em>$1</em>');
+	
+	// Line breaks
+	html = html.replace(/\n/g, '<br>');
+	
+	// Bullet lists: lines starting with - or *
+	html = html.replace(/^[\*\-] (.+)$/gm, '<li>$1</li>');
+	html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+	html = html.replace(/<\/li>\n<li>/g, '</li><li>');
+	
+	// Numbered lists: lines starting with digit.
+	html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+	
+	// Headers: # Text, ## Text, etc.
+	html = html.replace(/^### (.+?)(?=<br>|$)/gm, '<h3>$1</h3>');
+	html = html.replace(/^## (.+?)(?=<br>|$)/gm, '<h2>$1</h2>');
+	html = html.replace(/^# (.+?)(?=<br>|$)/gm, '<h1>$1</h1>');
+	
+	return html;
+}
+
+/**
  * Add a message to the chat UI
  */
 function addMessage(text, isUser = false) {
@@ -109,7 +147,14 @@ function addMessage(text, isUser = false) {
 	bubbleDiv.className = 'message-bubble';
 
 	const p = document.createElement('p');
-	p.textContent = text;
+	
+	if (isUser) {
+		// User messages: plain text
+		p.textContent = text;
+	} else {
+		// Assistant messages: parse markdown
+		p.innerHTML = parseMarkdown(text);
+	}
 
 	bubbleDiv.appendChild(p);
 	messageDiv.appendChild(bubbleDiv);
@@ -134,6 +179,7 @@ async function sendMessage(message) {
 	sendBtn.disabled = true;
 
 	try {
+		console.log(`Sending message to: ${API_BASE_URL}/chat`);
 		const response = await fetch(`${API_BASE_URL}/chat`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
@@ -144,10 +190,13 @@ async function sendMessage(message) {
 		});
 
 		if (!response.ok) {
-			throw new Error(`HTTP error! status: ${response.status}`);
+			const errorText = await response.text();
+			console.error(`API error (${response.status}):`, errorText);
+			throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
 		}
 
 		const data = await response.json();
+		console.log('Chat response received:', data);
 
 		// Add assistant response to UI
 		addMessage(data.aiResponse, false);
@@ -159,7 +208,7 @@ async function sendMessage(message) {
 		}
 	} catch (error) {
 		console.error('Chat error:', error);
-		addMessage(`Sorry, I encountered an error: ${error.message}. Please try again.`, false);
+		addMessage(`Sorry, I encountered an error: ${error.message}. Make sure the worker is deployed at ${API_BASE_URL}`, false);
 	} finally {
 		showLoading(false);
 		sendBtn.disabled = false;

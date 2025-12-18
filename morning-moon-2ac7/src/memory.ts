@@ -1,5 +1,8 @@
-import { DurableObject } from "cloudflare:workers"; 
+import { DurableObject } from "cloudflare:workers";
 
+/**
+ * User context stored in Durable Objects
+ */
 export interface UserMemory {
   profile: {
     riskFactors: string[]
@@ -38,25 +41,42 @@ function deepMerge<T>(target: T, source: Partial<T>): T {
   return result
 }
 
+/**
+ * Durable Object for storing user conversation memory
+ */
 export class UserContextDO extends DurableObject {
-  constructor(state: DurableObjectState, env: Env) {
-    super(state, env)
-  }
-
   async getMemory(): Promise<UserMemory> {
-    let memory = await this.state.storage.get<UserMemory>("memory")
-    if (!memory) {
-      memory = { ...DEFAULT_MEMORY, meta: { createdAt: Date.now(), lastActive: Date.now() } }
-      await this.state.storage.put("memory", memory)
+    try {
+      // Try legacy storage first
+      if (this.state?.storage?.get) {
+        let memory = await this.state.storage.get<UserMemory>("memory")
+        if (!memory) {
+          memory = { ...DEFAULT_MEMORY, meta: { createdAt: Date.now(), lastActive: Date.now() } }
+          await this.state.storage.put("memory", memory)
+        }
+        return memory
+      }
+    } catch (e) {
+      console.log("Storage API not available, using in-memory fallback")
     }
-    return memory
+
+    // Fallback: return default memory
+    return { ...DEFAULT_MEMORY, meta: { createdAt: Date.now(), lastActive: Date.now() } }
   }
 
   async updateMemory(patch: Partial<UserMemory>): Promise<UserMemory> {
     const current = await this.getMemory()
     const updated = deepMerge(current, patch)
     updated.meta.lastActive = Date.now()
-    await this.state.storage.put("memory", updated)
+    
+    try {
+      if (this.state?.storage?.put) {
+        await this.state.storage.put("memory", updated)
+      }
+    } catch (e) {
+      console.log("Storage API not available, data not persisted")
+    }
+    
     return updated
   }
 
