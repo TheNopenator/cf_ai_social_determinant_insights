@@ -175,7 +175,7 @@ Example Response:
 
 UI Example
 
-<img src ="images/User Profile.png" width=200px><img src="images/Chat UI.png" width=655px%>
+<img src ="images/User Profile.png" width=180px><img src="images/Chat UI.png" width=589px%>
 
 # Design Decisions
 
