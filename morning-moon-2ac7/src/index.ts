@@ -1,4 +1,5 @@
 import { DurableObject } from "cloudflare:workers";
+import { UserContextDO } from "../src/memory";
 
 /**
  * Welcome to Cloudflare Workers! This is your first Durable Objects application.
@@ -12,6 +13,9 @@ import { DurableObject } from "cloudflare:workers";
  *
  * Learn more at https://developers.cloudflare.com/durable-objects
  */
+
+// Export UserContextDO for Durable Object binding
+export { UserContextDO };
 
 /** A Durable Object's behavior is defined in an exported Javascript class */
 export class MyDurableObject extends DurableObject<Env> {
