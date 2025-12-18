@@ -52,7 +52,7 @@ Representative prompts:
 
 # 4. LLM Prompt Engineering & Workers AI Integration
 
-AI was used to help structure a responsible and context-aware system prompt and integrate Llama 3.3 via Workers AI.
+AI was used to help structure a responsible and context-aware system prompt and integrate Llama 3.1 8B via Workers AI.
 
 Representative prompts:
 
@@ -61,7 +61,7 @@ Representative prompts:
   - SYSTEM:
     - You are a medical insight assistant specializing in social determinants of health. Use the user’s history and risk context when responding. Always be clear, explain mechanisms, and avoid giving medical advice.
 
-- Help me integrate Llama 3.3 into Workers AI with the prompt above and a max token count of 300.
+- Help me integrate Llama 3.1 8B into Workers AI with the prompt above and a max token count of 300.
 
 - This prompt should include the user's question, the last Durable Object summary, the risk factors dictionary, and a brief summary of the chat history.
 
