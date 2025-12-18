@@ -49,7 +49,7 @@ Rather than offering diagnoses, the system focuses on explaining relationships, 
                │
                ▼
         ┌──────────────────────────┐
-        │ Workers AI (Llama 3.3)   │
+        │ Workers AI (Llama 3.1 8B)│
         │ - Context-aware replies  │
         └──────────────────────────┘
 ```
@@ -60,7 +60,7 @@ Rather than offering diagnoses, the system focuses on explaining relationships, 
 
 - Durable Objects — persistent, strongly consistent user memory
 
-- Workers AI (Llama 3.3) — large language model inference
+- Workers AI (Llama 3.1 8B) — large language model inference
 
 - Cloudflare Pages — frontend chat interface
 
