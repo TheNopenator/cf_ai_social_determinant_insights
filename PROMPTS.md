@@ -19,3 +19,5 @@ Here is an example prompt that should be given as context to the agent. SYSTEM: 
 Help me integrate Llama 3.3 into Workers AI with the prompt I gave and a max token count of 300. This prompt should include the user's question, the last DO summary, the risk factors dictionary, and the chat history (brief summary only).
 
 The next steps is to log analytics using KV, and this should be included in the GET /analytics route, which displays JSON stats.
+
+Help me architect the frontend chat UI using Cloudflare Pages: this should contain a navigable two-panel chat, auto-scroll, "user bubble" + "assistant bubble", quick reply suggestions, and session cookies.
