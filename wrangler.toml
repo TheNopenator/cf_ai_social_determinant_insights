@@ -1,1 +1,6 @@
+[ai]
+binding = "AI"
 
+[[durable_objects.bindings]]
+name = "USER_CONTEXT"
+class_name = "UserContextDO"
