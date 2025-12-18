@@ -173,6 +173,10 @@ Example Response:
 }
 ```
 
+UI Example
+
+<img src ="images/User Profile.png" width=200px><img src="images/Chat UI.png" width=655px%>
+
 # Design Decisions
 
 - Durable Objects over databases: Enables fast, per-user state with minimal operational complexity.
