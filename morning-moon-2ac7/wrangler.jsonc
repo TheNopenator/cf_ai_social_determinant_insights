@@ -25,7 +25,14 @@
 	},
 	"observability": {
 		"enabled": true
-	}
+	},
+	"kv_namespaces": [
+		{
+			"binding": "ANALYTICS",
+			"id": "analytics-namespace",
+			"preview_id": "analytics-namespace-preview"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
